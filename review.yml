@@ -1,0 +1,107 @@
+aid: scalar-api
+name: Scalar
+review:
+  question: Does Scalar expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-11'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was authored. Scalar's own public surfaces are HTTP:
+    the registry read CDN (registry.scalar.com) serves static OpenAPI documents
+    over HTTPS, the Galaxy example API (galaxy.scalar.com) is request/response
+    REST, and hosted docs are static web content. There is no server-push
+    transport (WebSocket or SSE) on Scalar's own hosted API to model. Note that
+    Scalar's open-source API Client can send WebSocket requests as a testing
+    feature, but that is a client capability for calling other people's APIs,
+    not a WebSocket API exposed by Scalar.
+findings:
+  summary: |
+    Scalar does not publish a documented public WebSocket API. Scalar is an
+    open-source (MIT) API platform: a self-hostable API Reference renderer, an
+    offline-first API Client (desktop and browser), a CLI, an OpenAPI parser and
+    mock server, and the Galaxy example API - all at github.com/scalar/scalar.
+    On top of these it runs a hosted SaaS platform (dashboard.scalar.com) with a
+    Registry, a Docs/developer-portal product, SDK generation, hosted MCP
+    servers, and an AI Agent. Scalar's own network-facing surfaces are HTTP: the
+    registry read CDN serves published OpenAPI documents over HTTPS
+    (registry.scalar.com/@{namespace}/apis/{slug}), and galaxy.scalar.com is a
+    REST example API. No WebSocket (ws:// or wss://) endpoint is exposed by
+    Scalar's own platform.
+  openSource: |
+    The core of Scalar is open source under the MIT license
+    (github.com/scalar/scalar) and self-hostable: the @scalar/api-reference
+    renderer, the API Client, the @scalar/cli, the OpenAPI parser, the mock
+    server, and the Galaxy example API. The hosted platform layers a Registry,
+    Docs, SDK generation, MCP hosting, and the AI Agent on top as paid SaaS.
+  hostedApiStatus: |
+    Scalar does NOT publish a fully documented public REST management API for
+    accounts or the registry. Registry publish / list / update / delete are
+    performed through the authenticated Scalar CLI (scalar registry ...), which
+    wraps the platform's internal API. The one confirmed, publicly reachable
+    HTTP surface is the registry read CDN - e.g.
+    https://registry.scalar.com/@scalar/apis/galaxy?format=json - which serves a
+    published OpenAPI document with no authentication for public documents. The
+    Galaxy example API (galaxy.scalar.com) is a real, live REST API used for
+    demos. Management endpoints in this repo's OpenAPI/collections are modeled
+    (endpointsModeled).
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://registry.scalar.com
+      documented: true
+      note: Public read CDN serving published OpenAPI documents at /@{namespace}/apis/{slug}. Confirmed public surface.
+    - protocol: REST
+      scheme: https
+      baseURL: https://galaxy.scalar.com
+      documented: true
+      note: Scalar Galaxy - a live fictional example REST API published as OpenAPI 3.1.1 for testing and demos.
+    - protocol: CLI
+      scheme: https
+      documented: true
+      note: Registry publish/list/update/delete and document validate/lint via the @scalar/cli, authenticated with a Scalar API key. Wraps an internal API; no documented public REST equivalent.
+    - protocol: Component
+      scheme: n/a
+      documented: true
+      note: API Reference renderer and API Client are self-hosted components/apps, not network services exposed by Scalar.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is exposed by Scalar's own hosted platform. The open-source API Client can send WebSocket requests to other APIs as a testing feature.
+  endpointsConfirmedRest:
+    - GET https://registry.scalar.com/@{namespace}/apis/{slug}
+    - GET https://registry.scalar.com/@scalar/apis/galaxy?format=json
+    - GET https://galaxy.scalar.com (Galaxy example REST API; planets, users, auth)
+  endpointsModeled:
+    - GET  https://registry.scalar.com/@{namespace}/apis/{slug}/{version}
+    - GET  https://registry.scalar.com/@{namespace}/apis
+    - POST https://registry.scalar.com/@{namespace}/apis (publish; performed via CLI)
+sources:
+  - url: https://scalar.com/
+    type: Website
+    note: The API Company - products overview (Docs, SDKs, API Client, Registry, Agent).
+  - url: https://github.com/scalar/scalar
+    type: SourceCode
+    note: MIT-licensed monorepo - API Reference, API Client, CLI, parser, Galaxy.
+  - url: https://guides.scalar.com/scalar/scalar-registry/getting-started
+    type: Documentation
+    note: Registry getting-started; documents are served over registry.scalar.com.
+  - url: https://guides.scalar.com/scalar/scalar-registry/cli
+    type: Documentation
+    note: scalar registry publish/list/update/delete; API-key auth via the CLI.
+  - url: https://registry.scalar.com/@scalar/apis/galaxy?format=json
+    type: OpenAPI
+    note: Confirmed public read of the Galaxy example OpenAPI 3.1.1 document.
+  - url: https://scalar.com/pricing
+    type: Plans
+    note: Free / Pro (72 USD per month) / Enterprise; SDK per-language add-ons; Agent credits.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket protocol surface exists. Scalar's own public HTTP surfaces are
+    the registry read CDN and the Galaxy example REST API; management is done
+    through the authenticated CLI. No AsyncAPI document was created because there
+    is no server-push transport on Scalar's own API to model. The provider entry
+    documents the open-source components and hosted platform as capability areas,
+    with modeled management endpoints flagged endpointsModeled.

@@ -1,0 +1,23 @@
+generated: '2026-07-11'
+method: derived
+source: https://guides.scalar.com/scalar/scalar-registry/cli
+summary:
+  types:
+  - apiKey
+schemes:
+- name: scalarApiKey
+  type: apiKey
+  in: header
+  description: >-
+    Access to the Scalar hosted platform (Registry publish/manage, Docs
+    deployment, SDK generation, Agent/MCP) is authenticated with a Scalar API
+    key created in the Scalar dashboard (dashboard.scalar.com) and used by the
+    Scalar CLI once you run `scalar auth login`. Scalar does not publish a fully
+    documented public REST management API, so the exact header name and request
+    shape are not officially specified - the CLI handles authentication on your
+    behalf. The public registry read CDN
+    (registry.scalar.com/@{namespace}/apis/{slug}) requires no auth for public
+    documents. Authentication scheme is modeled (endpointsModeled).
+  sources:
+  - https://guides.scalar.com/scalar/scalar-registry/cli
+  - https://guides.scalar.com/scalar/scalar-registry/getting-started

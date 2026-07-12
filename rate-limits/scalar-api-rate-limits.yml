@@ -1,0 +1,68 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Scalar
+providerId: scalar-api
+created: '2026-07-11'
+modified: '2026-07-11'
+reconciled: false
+tags:
+- API Documentation
+- Registry
+- Open Source
+- Rate Limiting
+- Quotas
+description: >-
+  Scalar does not publish fixed numeric rate limits. The open-source components
+  (API Reference renderer, API Client, CLI) run on your own infrastructure and
+  are bounded only by your hardware. On the hosted platform, usage is shaped by
+  plan quotas rather than a per-minute request cap - for example the Free tier
+  caps the registry at 3 APIs and includes 50 Agent Scalar credits, while Pro
+  includes 500 Agent credits. The public registry read CDN
+  (registry.scalar.com) serves published documents as static content and does
+  not document a per-client request limit. The AI Agent / MCP is metered by
+  Agent Scalar credits.
+notes: >-
+  Numeric per-account or per-endpoint request-rate limits are not documented as
+  of the review date. Quotas below are plan allowances, not request-rate caps.
+  Verify on scalar.com/pricing during reconciliation.
+sources:
+- https://scalar.com/pricing
+- https://guides.scalar.com/scalar/scalar-registry/getting-started
+- https://github.com/scalar/scalar
+responseCodes:
+  throttled: 429
+limits:
+- name: Registry APIs (Free)
+  scope: account
+  metric: apis
+  limit: 3
+  notes: The Free hosted tier allows up to 3 APIs in the registry; Pro is unlimited.
+- name: Agent Credits (Free)
+  scope: account
+  metric: credits
+  limit: 50
+  notes: Free tier includes 50 Agent Scalar credits per period.
+- name: Agent Credits (Pro)
+  scope: account
+  metric: credits
+  limit: 500
+  notes: Pro tier includes 500 Agent Scalar credits per period.
+- name: Registry Read CDN
+  scope: public
+  metric: requests
+  limit: not published
+  notes: Published documents are served as static content from registry.scalar.com; no documented per-client cap.
+- name: Self-Hosted Components
+  scope: deployment
+  metric: requests
+  limit: hardware-bound
+  notes: The MIT-licensed renderer, API Client, and CLI run on your own infrastructure.
+policies:
+- name: Plan Quotas
+  description: Hosted usage is governed by plan allowances (registry APIs, editor seats, Agent credits) rather than a per-minute request rate.
+- name: Backoff Strategy
+  description: Clients of the registry read CDN should implement exponential backoff with jitter and honor Retry-After on any 429 responses.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

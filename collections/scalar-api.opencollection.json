@@ -1,0 +1,71 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Scalar Registry (Public Read Surface) - Modeled",
+    "version": "2026-07-11",
+    "description": "Modeled Open Collection for Scalar's hosted Registry. Only the GET read of a published document (registry.scalar.com/@{namespace}/apis/{slug}) is a confirmed public endpoint; management operations are performed via the Scalar CLI and are modeled here (endpointsModeled)."
+  },
+  "items": [
+    {
+      "info": { "name": "Registry Read", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Retrieve the Galaxy example document (JSON)", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://registry.scalar.com/@scalar/apis/galaxy?format=json"
+          },
+          "docs": "Confirmed public endpoint. Returns the Scalar Galaxy example OpenAPI 3.1.1 document."
+        },
+        {
+          "info": { "name": "Retrieve a published document", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://registry.scalar.com/@:namespace/apis/:slug",
+            "params": [
+              { "name": "namespace", "value": "scalar", "type": "path", "description": "Team namespace." },
+              { "name": "slug", "value": "galaxy", "type": "path", "description": "Document slug." },
+              { "name": "format", "value": "json", "type": "query", "description": "json or yaml." }
+            ]
+          },
+          "docs": "Confirmed public read surface for the latest version of a published OpenAPI document."
+        },
+        {
+          "info": { "name": "Retrieve a specific version (modeled)", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://registry.scalar.com/@:namespace/apis/:slug/:version",
+            "params": [
+              { "name": "namespace", "value": "scalar", "type": "path" },
+              { "name": "slug", "value": "galaxy", "type": "path" },
+              { "name": "version", "value": "1.0.0", "type": "path", "description": "Pinned version." }
+            ]
+          },
+          "docs": "MODELED. Version-pinned read of a published document."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Registry Management (via CLI - modeled)", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List APIs in a namespace", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://registry.scalar.com/@:namespace/apis"
+          },
+          "docs": "MODELED from `scalar registry list --namespace`. No documented public REST equivalent."
+        },
+        {
+          "info": { "name": "Publish an OpenAPI document", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://registry.scalar.com/@:namespace/apis",
+            "body": { "type": "json", "data": "{\"slug\":\"user-api\",\"version\":\"1.0.0\",\"private\":false,\"document\":{}}" }
+          },
+          "docs": "MODELED from `scalar registry publish <file> --namespace <ns> --slug <slug>`. Performed through the authenticated Scalar CLI."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,173 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Scalar
+providerId: scalar-api
+created: '2026-07-11'
+modified: '2026-07-11'
+reconciled: false
+tags:
+- API Documentation
+- API Client
+- Open Source
+- Registry
+- Plans
+description: >-
+  Scalar has two consumption models. The core components - the API Reference
+  renderer, the API Client, the CLI, the OpenAPI parser, and the Galaxy example
+  API - are open source under the MIT license and free to self-host with no
+  vendor fee. The hosted platform (dashboard.scalar.com) is offered as a Free
+  tier, a paid Pro tier at 72 USD per month, and a custom Enterprise tier. SDK
+  generation is a paid per-language add-on (about 100 USD per language). The AI
+  Agent / hosted MCP is metered in Agent Scalar credits (50 included on Free,
+  500 on Pro). Prices below were captured from scalar.com/pricing on 2026-07-11
+  and should be re-verified during reconciliation.
+notes: >-
+  Open-source use has no license fee. Verify current hosted tiers, per-language
+  SDK pricing, and Agent credit allowances on scalar.com/pricing during
+  reconciliation.
+sources:
+- https://scalar.com/pricing
+- https://scalar.com/products/agent/pricing
+- https://github.com/scalar/scalar
+plans:
+- id: scalar-open-source
+  name: Open Source (Self-Hosted)
+  type: free
+  description: >-
+    The MIT-licensed Scalar components - API Reference renderer, offline-first
+    API Client (desktop and browser), CLI, OpenAPI parser, mock server, and the
+    Galaxy example API - self-hosted with no vendor fee or seat limit.
+  entries:
+  - label: Self-Hosted Usage
+    name: self_hosted_usage
+    type: flat
+    metric: license
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: free (MIT, self-hosted)
+    userMultiplied: false
+  elements:
+  - name: API Reference Renderer
+  - name: API Client (Desktop and Browser)
+  - name: Scalar CLI
+  - name: OpenAPI Parser and Mock Server
+- id: scalar-cloud-free
+  name: Scalar Free
+  type: free
+  description: >-
+    Free tier of the hosted platform - hosted OpenAPI docs, the built-in API
+    client, unlimited viewer seats, one editor seat, up to 3 APIs in the
+    registry, and 50 Agent Scalar credits.
+  entries:
+  - label: Registry APIs
+    name: free_registry_apis
+    type: flat
+    metric: apis
+    limit: 3
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: '0'
+    currency: USD
+    userMultiplied: false
+  - label: Agent Credits
+    name: free_agent_credits
+    type: usage
+    metric: credits
+    limit: 50
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: included
+    userMultiplied: false
+  elements:
+  - name: Hosted OpenAPI Docs
+  - name: Built-in API Client
+  - name: One Editor Seat
+  - name: Unlimited Viewer Seats
+- id: scalar-cloud-pro
+  name: Scalar Pro
+  type: paid
+  description: >-
+    Paid hosted tier - custom domains and subdomains, Git Sync, Markdown/MDX,
+    full developer portals, versions and API references, hosted MCP servers,
+    automated GitHub workflows, private and public registry access, unlimited
+    editor seats, and 500 Agent Scalar credits. Priced at 72 USD per month.
+  entries:
+  - label: Pro Subscription
+    name: pro_subscription
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: '72'
+    currency: USD
+    userMultiplied: false
+  - label: Agent Credits
+    name: pro_agent_credits
+    type: usage
+    metric: credits
+    limit: 500
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: included
+    userMultiplied: false
+  elements:
+  - name: Custom Domains and Subdomains
+  - name: Git Sync, Markdown and MDX
+  - name: Hosted MCP Servers
+  - name: Automated GitHub Workflows
+  - name: Private and Public Registry
+  - name: Unlimited Editor Seats
+- id: scalar-sdk-addon
+  name: SDK Generation Add-On
+  type: paid
+  description: >-
+    Per-language SDK generation (TypeScript, Python, Go, Java, PHP, C#, Ruby)
+    added on top of a paid plan, priced per language.
+  entries:
+  - label: SDK Language
+    name: sdk_language
+    type: flat
+    metric: language
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: '100'
+    currency: USD
+    userMultiplied: true
+  elements:
+  - name: Type-Safe Client Libraries
+  - name: Registry-Synced Generation
+- id: scalar-enterprise
+  name: Enterprise
+  type: enterprise
+  description: >-
+    Custom plan - full developer portals, SSO/SAML and RBAC, priority support
+    and SLAs, SDK and MCP migration services, a dedicated Slack/Teams channel,
+    and custom Agent credit allowances. Contact Scalar.
+  entries:
+  - label: Enterprise Agreement
+    name: enterprise
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: SSO/SAML and RBAC
+  - name: Priority Support and SLAs
+  - name: Migration Services
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
