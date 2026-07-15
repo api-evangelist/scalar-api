@@ -186,6 +186,8 @@ apis:
     API Reference and API Client. This is a real, publicly reachable REST API used for
     demonstration.
 common:
+- type: AgenticAccess
+  url: agentic-access/scalar-api-agentic-access.yml
 - type: Authentication
   url: authentication/scalar-api-authentication.yml
 - type: GitHubOrganization
