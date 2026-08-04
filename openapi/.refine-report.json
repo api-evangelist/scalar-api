@@ -1,0 +1,16 @@
+{
+  "provider": "scalar-api",
+  "sources": [
+    "scalar-api-registry-management-api-openapi.yml",
+    "scalar-api-registry-read-api-openapi.yml"
+  ],
+  "outputs": [
+    "scalar-api-registry-management-api-openapi.yml",
+    "scalar-api-registry-read-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
