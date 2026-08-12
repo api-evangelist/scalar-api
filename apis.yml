@@ -189,6 +189,9 @@ apis:
   - type: SourceCode
     url: https://github.com/scalar/scalar/tree/main/packages/galaxy
 common:
+- type: License
+  name: MIT
+  url: https://github.com/scalar/scalar/blob/main/LICENSE
 - type: AgenticAccess
   url: agentic-access/scalar-api-agentic-access.yml
 - type: Authentication
