@@ -1,0 +1,410 @@
+{
+  "item": [
+    {
+      "id": "9421856d-9a1a-4009-af28-fe707cfcdbbb",
+      "name": "Registry Read",
+      "description": {
+        "content": "Public retrieval of published OpenAPI documents (confirmed public surface).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dd31cfaa-e70d-4e3f-8b2b-aa1a451cc212",
+          "name": "Retrieve a published OpenAPI document (latest version)",
+          "request": {
+            "name": "Retrieve a published OpenAPI document (latest version)",
+            "description": {
+              "content": "Returns the current version of the OpenAPI document published under a namespace and slug. Confirmed public endpoint - e.g. /@scalar/apis/galaxy?format=json. No authentication required for public documents.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "@{{namespace}}",
+                "apis",
+                ":slug"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "<string>",
+                  "description": "Representation to return."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "slug",
+                  "description": "(Required) The slug identifier of the API document."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "caa01896-e65e-4cf8-9ed0-b24b6fae4b97",
+              "name": "The published OpenAPI document.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "@{{namespace}}",
+                    "apis",
+                    ":slug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) The slug identifier of the API document."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "031b50c2-b38a-4793-bc4a-f1c66d6edb70",
+              "name": "No published document exists for this namespace/slug.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "@{{namespace}}",
+                    "apis",
+                    ":slug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) The slug identifier of the API document."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4bbd486f-b159-4db0-b5e1-c10477141084",
+          "name": "Retrieve a specific version of a published OpenAPI document",
+          "request": {
+            "name": "Retrieve a specific version of a published OpenAPI document",
+            "description": {
+              "content": "MODELED. Returns a specific pinned version of a published document. Version addressing is supported by the registry; the exact path form is modeled here.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "@{{namespace}}",
+                "apis",
+                ":slug",
+                ":version"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "slug",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "version",
+                  "description": "(Required) The published version identifier (e.g. 1.0.0)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fbd37d8b-59a0-4dec-96fa-f36922cab952",
+              "name": "The published OpenAPI document at the requested version.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "@{{namespace}}",
+                    "apis",
+                    ":slug",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The published version identifier (e.g. 1.0.0)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "291f9705-99c3-428c-b3f2-5764600b4d17",
+              "name": "No such version.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "@{{namespace}}",
+                    "apis",
+                    ":slug",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The published version identifier (e.g. 1.0.0)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://registry.scalar.com",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) The Scalar team namespace the document was published under.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "namespace"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ca85a397-dcb5-46cf-b483-769b22a34fa5",
+    "name": "Scalar Registry (Public Read Surface) - Modeled Registry Management Registry Read API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "MODELED / endpointsModeled. Scalar is an open-source API platform whose hosted Registry stores and versions OpenAPI documents. Published documents are served over a public HTTPS read CDN at registry.scalar.com in the form /@{namespace}/apis/{slug}, optionally with a ?format=json or ?format=yaml query to control the returned representation, and an optional version segment. This document models that public read surface plus the registry lifecycle operations that are performed through the authenticated Scalar CLI (scalar registry publish / list / update / delete). Scalar does NOT publish a fully documented public REST management API; the mutating operations below are modeled from the CLI behavior for cataloging purposes and their exact HTTP shapes are not officially specified. The one confirmed, publicly reachable endpoint is the GET read of a published document (e.g. https://registry.scalar.com/@scalar/apis/galaxy?format=json).\n\nContact Support:\n Name: Scalar",
+      "type": "text/plain"
+    }
+  }
+}

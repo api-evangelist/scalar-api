@@ -1,0 +1,232 @@
+{
+  "item": [
+    {
+      "id": "df8b5ef0-8f4b-4eb5-92f4-5cafdc75c8ab",
+      "name": "Registry Management",
+      "description": {
+        "content": "Publish / list / update / delete documents - performed via the Scalar CLI (modeled).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "df14e505-7f67-4bc2-bac1-a04025cf1205",
+          "name": "List APIs in a namespace",
+          "request": {
+            "name": "List APIs in a namespace",
+            "description": {
+              "content": "MODELED from `scalar registry list --namespace`. Lists the API documents registered under a team namespace. Exposed to end users through the Scalar CLI; a documented public REST equivalent is not published.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "@{{namespace}}",
+                "apis"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9eb78c1f-913a-487e-ae8f-3c6cdf1ba08b",
+              "name": "A list of registered API documents (modeled).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "@{{namespace}}",
+                    "apis"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cf4496c9-4a1a-40b0-ba58-cf5b47c1f5f9",
+          "name": "Publish an OpenAPI document",
+          "request": {
+            "name": "Publish an OpenAPI document",
+            "description": {
+              "content": "MODELED from `scalar registry publish <file> --namespace <ns> --slug <slug> [--version] [--private] [--force]`. Publishes (or overwrites) an OpenAPI document in the registry. Performed through the authenticated Scalar CLI; the exact HTTP request shape is not officially documented.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "@{{namespace}}",
+                "apis"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"slug\": \"<string>\",\n  \"version\": \"<string>\",\n  \"private\": \"<boolean>\",\n  \"document\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "add71b32-776a-4463-bf22-550360aab50d",
+              "name": "Document published (modeled).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "@{{namespace}}",
+                    "apis"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"slug\": \"<string>\",\n  \"version\": \"<string>\",\n  \"private\": \"<boolean>\",\n  \"document\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://registry.scalar.com",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "namespace"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5826bf90-619a-4b7a-8a67-a6e93f659920",
+    "name": "Scalar Registry (Public Read Surface) - Modeled Registry Management API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "MODELED / endpointsModeled. Scalar is an open-source API platform whose hosted Registry stores and versions OpenAPI documents. Published documents are served over a public HTTPS read CDN at registry.scalar.com in the form /@{namespace}/apis/{slug}, optionally with a ?format=json or ?format=yaml query to control the returned representation, and an optional version segment. This document models that public read surface plus the registry lifecycle operations that are performed through the authenticated Scalar CLI (scalar registry publish / list / update / delete). Scalar does NOT publish a fully documented public REST management API; the mutating operations below are modeled from the CLI behavior for cataloging purposes and their exact HTTP shapes are not officially specified. The one confirmed, publicly reachable endpoint is the GET read of a published document (e.g. https://registry.scalar.com/@scalar/apis/galaxy?format=json).\n\nContact Support:\n Name: Scalar",
+      "type": "text/plain"
+    }
+  }
+}

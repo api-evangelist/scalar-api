@@ -1,0 +1,66 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Scalar Registry (Public Read Surface) - Modeled Registry Management API",
+    "version": "2026-07-11"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Registry Management",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List APIs in a namespace",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://registry.scalar.com/@:namespace/apis",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "MODELED from `scalar registry list --namespace`. Lists the API documents registered under a team namespace. Exposed to end users through the Scalar CLI; a documented public REST equivalent is not published."
+        },
+        {
+          "info": {
+            "name": "Publish an OpenAPI document",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://registry.scalar.com/@:namespace/apis",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "MODELED from `scalar registry publish <file> --namespace <ns> --slug <slug> [--version] [--private] [--force]`. Publishes (or overwrites) an OpenAPI document in the registry. Performed through the authenticated Scalar CLI; the exact HTTP request shape is not officially documented."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,91 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Scalar Registry (Public Read Surface) - Modeled Registry Management Registry Read API",
+    "version": "2026-07-11"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Registry Read",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a published OpenAPI document (latest version)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://registry.scalar.com/@:namespace/apis/:slug",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "scalar",
+                "type": "path",
+                "description": "The Scalar team namespace the document was published under."
+              },
+              {
+                "name": "slug",
+                "value": "galaxy",
+                "type": "path",
+                "description": "The slug identifier of the API document."
+              },
+              {
+                "name": "format",
+                "value": "json",
+                "type": "query",
+                "description": "Representation to return."
+              }
+            ]
+          },
+          "docs": "Returns the current version of the OpenAPI document published under a namespace and slug. Confirmed public endpoint - e.g. /@scalar/apis/galaxy?format=json. No authentication required for public documents."
+        },
+        {
+          "info": {
+            "name": "Retrieve a specific version of a published OpenAPI document",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://registry.scalar.com/@:namespace/apis/:slug/:version",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "scalar",
+                "type": "path"
+              },
+              {
+                "name": "slug",
+                "value": "galaxy",
+                "type": "path"
+              },
+              {
+                "name": "version",
+                "value": "1.0.0",
+                "type": "path",
+                "description": "The published version identifier (e.g. 1.0.0)."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "MODELED. Returns a specific pinned version of a published document. Version addressing is supported by the registry; the exact path form is modeled here."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
