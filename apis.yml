@@ -32,6 +32,13 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/scalar-api
 tags:
 - API Documentation
 - API Client
+- Open-Source
+- Developer Tools
+- API Reference
+- OpenAPI
+tags_raw:
+- API Documentation
+- API Client
 - Open Source
 - Developer Tools
 - API Reference
@@ -43,6 +50,11 @@ apis:
 - aid: scalar-api:scalar-api-reference
   name: Scalar API Reference
   tags:
+  - API Reference
+  - API Documentation
+  - Open-Source
+  - OpenAPI
+  tags_raw:
   - API Reference
   - API Documentation
   - Open Source
@@ -63,6 +75,11 @@ apis:
 - aid: scalar-api:scalar-api-client
   name: Scalar API Client
   tags:
+  - API Client
+  - Testing
+  - Developer Tools
+  - Open-Source
+  tags_raw:
   - API Client
   - Testing
   - Developer Tools
@@ -101,6 +118,11 @@ apis:
   tags:
   - CLI
   - Developer Tools
+  - Open-Source
+  - OpenAPI
+  tags_raw:
+  - CLI
+  - Developer Tools
   - Open Source
   - OpenAPI
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
@@ -133,6 +155,11 @@ apis:
 - aid: scalar-api:scalar-agent-mcp
   name: Scalar Agent and MCP
   tags:
+  - Artificial Intelligence
+  - MCP
+  - Agents
+  - Developer Tools
+  tags_raw:
   - AI
   - MCP
   - Agent
