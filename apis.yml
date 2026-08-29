@@ -15,6 +15,20 @@ description: Scalar is an open-source (MIT) API platform built on the OpenAPI st
   frameworks (FastAPI, Hono, Elysia, NestJS, Laravel, and others). Publishing to the
   hosted registry is done through the Scalar CLI; the registry read surface and the
   Galaxy example API are public over HTTPS.
+deliveryModel:
+  model: open-core
+  license: MIT
+  open_source: true
+  commercial: true
+  callable_host: true
+  label: Open core · an OSS project plus a commercial hosted product
+  confidence: high
+  source:
+  - license
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
@@ -216,6 +230,16 @@ apis:
   - type: SourceCode
     url: https://github.com/scalar/scalar/tree/main/packages/galaxy
 common:
+- type: IssueTracker
+  url: https://github.com/scalar/scalar/issues
+- type: Releases
+  url: https://github.com/scalar/scalar/releases
+- type: SecurityPolicy
+  url: https://github.com/scalar/scalar/blob/main/SECURITY.md
+- type: CodeOfConduct
+  url: https://github.com/scalar/scalar/blob/main/CODE_OF_CONDUCT.md
+- type: ContributionGuide
+  url: https://github.com/scalar/scalar/blob/main/CONTRIBUTING.md
 - type: License
   name: MIT
   url: https://github.com/scalar/scalar/blob/main/LICENSE
