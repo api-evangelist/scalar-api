@@ -1,17 +1,17 @@
 ---
 kin_checks:
   slug: scalar-api
-  schema_version: 0.15.1
-  scored_at: '2026-08-27'
-  run_ts: 2026-08-27T140727
+  schema_version: 0.16.0
+  scored_at: '2026-08-29'
+  run_ts: 2026-08-29T213958
   note: Actionable checks only (missed + partial). earned/na are every other check
-    in rubric/scoring-0.15.1.yml; counts below let you verify that.
+    in rubric/scoring-0.16.0.yml; counts below let you verify that.
   counts:
     total: 130
-    earned: 22
+    earned: 29
     partial: 21
-    missed: 63
-    na: 24
+    missed: 60
+    na: 20
   checks:
   - id: base_url_per_api
     status: missed
@@ -61,13 +61,9 @@ kin_checks:
     status: missed
   - id: overlay_published
     status: missed
-  - id: change_log_present
-    status: missed
   - id: status_page_present
     status: missed
   - id: deprecation_policy
-    status: missed
-  - id: security_disclosure
     status: missed
   - id: webhooks_advertised
     status: missed
@@ -102,8 +98,6 @@ kin_checks:
   - id: trust_center
     status: missed
   - id: reg_oauth_scopes
-    status: missed
-  - id: reg_security_disclosure
     status: missed
   - id: reg_vulnerability_disclosure
     status: missed
